@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'XLRefresh_Example' do
+  pod 'XLRefresh', :path => '../'
+
+  target 'XLRefresh_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
