@@ -1,0 +1,16 @@
+PODS:
+  - XLRefresh (0.1.0)
+
+DEPENDENCIES:
+  - XLRefresh (from `../`)
+
+EXTERNAL SOURCES:
+  XLRefresh:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  XLRefresh: ac9e0eaa8300876233d47cb6f3eb82a1873d99b6
+
+PODFILE CHECKSUM: 89df1890fa62a2169544d6450464ab6d6fea3597
+
+COCOAPODS: 1.6.0.beta.2

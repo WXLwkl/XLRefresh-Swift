@@ -1,0 +1,22 @@
+{
+  "name": "XLRefresh",
+  "version": "0.1.0",
+  "summary": "A short description of XLRefresh.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/WXLwkl/XLRefresh",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "WXLwkl": "935858549@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/WXLwkl/XLRefresh.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "XLRefresh/Classes/**/*"
+}
