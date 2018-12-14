@@ -79,7 +79,7 @@ open class XLRefreshComponent: UIView {
             }
         }
     }
-    
+
     /// 内部维护的状态
     private var _state: XLRefreshState = .none
     /// 刷新状态, 一般交给子类内部实现, 默认是普通状态 (通过该方式模拟oc的set and get)
@@ -126,9 +126,11 @@ open class XLRefreshComponent: UIView {
         if self.window != nil {
             self.state = .refreshing
         } else {
-            self.state = .willRefresh
-            /// 预防从另一个控制器回到这个控制器，回来要重新刷新一下
-            self.setNeedsDisplay()
+            if self.state != .refreshing {
+                self.state = .willRefresh
+                // 刷新(预防从另一个控制器回到这个控制器的情况，回来要重新刷新一下)
+                self.setNeedsDisplay()
+            }
         }
     }
     /// 开始刷新的回调
@@ -195,6 +197,7 @@ open class XLRefreshComponent: UIView {
         super.draw(rect)
         if self.state == .willRefresh {
             /// 预防view还未完全显示就调用了beginRefreshing
+            self.pullingPercent = 1.0
             self.state = .refreshing
         }
     }

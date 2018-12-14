@@ -9,11 +9,19 @@
 import UIKit
 import XLRefresh
 
+enum RefreshType {
+    case `default`
+    case taobao
+    case boss
+}
+
 class TestViewController: UIViewController {
 
     deinit {
         NSLog("释放了。。。")
     }
+    
+    public var refreshType: RefreshType = .default
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: view.bounds, style: .plain)
@@ -39,15 +47,19 @@ class TestViewController: UIViewController {
         
         self.view.addSubview(tableView);
         
+        
+        switch refreshType {
+        case .taobao:
+            tableView.xl_header = TaobaoHeader.headerWithRefresing(target: self, action: #selector(TestViewController.loadNewData))
+        case .boss:
+            tableView.xl_header = BossHeader.headerWithRefresing(target: self, action: #selector(TestViewController.loadNewData))
+        default:
+            tableView.xl_header = XLRefreshNormalHeader.headerWithRefresing(target: self, action: #selector(TestViewController.loadNewData))
+        }
 //        tableView.xl_header = XLRefreshHeader.headerWithRefreshing { [weak self] in
 //            guard let `self` = self else { return }
 //            self.loadNewData()
 //        }
-        
-//        tableView.xl_header = TaobaoHeader.headerWithRefresing(target: self, action: #selector(TestViewController.loadNewData))
-        tableView.xl_header = TaobaoHeader.headerWithRefresing(target: self, action: #selector(TestViewController.loadNewData))
-        
-        
         tableView.xl_footer = XLRefreshBackNormalFooter.footerWithRefreshing { [weak self] in
             guard let `self` = self else { return }
             self.loadMoreData()

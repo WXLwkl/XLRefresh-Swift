@@ -116,7 +116,7 @@ open class XLRefreshLeft: XLRefreshComponent {
         // 偏移量加上自身高度
         let normalPullingOffsetX = happenOffsetX - self.xl_width
         let pullingPercent = (happenOffsetX - offsetX) / self.xl_width
-        NSLog("--->>%.2f", pullingPercent)
+        
         // 如果正在拖拽
         if indeedScrollView.isDragging {
             self.pullingPercent = pullingPercent

@@ -87,12 +87,11 @@ class TaobaoHeader: XLRefreshHeader {
                 if oldState == .refreshing {
                     didCompleteHideAnimation()
                 } else {
-//                    self.arrowLayer.isHidden = false
+
                 }
             } else if newValue == .pulling {
-//                self.arrowLayer.isHidden = true
+
             } else if newValue == .refreshing {
-                NSLog("刷新")
                 didBeginRefreshingState()
             }
         }

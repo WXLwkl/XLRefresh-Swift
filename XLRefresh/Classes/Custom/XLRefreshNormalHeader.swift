@@ -38,7 +38,7 @@ public class XLRefreshNormalHeader: XLRefreshStateHeader {
     override public var pullingPercent: CGFloat {
         didSet {
             //这里可以根据百分比 绘制进度效果
-            NSLog("%f", pullingPercent)
+            NSLog("--->>%f", pullingPercent)
             self.backgroundColor = UIColor.red.withAlphaComponent(pullingPercent)
         }
     }

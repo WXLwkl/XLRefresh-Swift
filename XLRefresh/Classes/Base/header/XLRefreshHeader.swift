@@ -95,9 +95,11 @@ open class XLRefreshHeader: XLRefreshComponent {
     open override func scrollViewContentOffsetDid(change: [NSKeyValueChangeKey : Any]) {
         super.scrollViewContentOffsetDid(change: change)
         guard let indeedScrollView = self.scrollView else { return }
-        
+        // 在刷新的refreshing状态
         if self.state == .refreshing {
+            // 暂时保留
             if self.window == nil { return }
+            // sectionheader停留解决
             var inserT = -indeedScrollView.xl_offsetY > _scrollViewOriginalInset.top ? -indeedScrollView.xl_offsetY : _scrollViewOriginalInset.top
             inserT = inserT > self.xl_height + _scrollViewOriginalInset.top ? self.xl_height + _scrollViewOriginalInset.top : inserT
             indeedScrollView.xl_insertT = inserT
@@ -113,10 +115,8 @@ open class XLRefreshHeader: XLRefreshComponent {
         // 如果向上滚动到看不到头部控件 直接返回
         if offsetY > happenOffsetY { return }
         // 普通和即将刷新的临界点
-        // 偏移量加上自身高度
         let normalPullingOffsetY = happenOffsetY - self.xl_height
         let pullingPercent = (happenOffsetY - offsetY) / self.xl_height
-
         // 如果正在拖拽
         if indeedScrollView.isDragging {
             self.pullingPercent = pullingPercent
